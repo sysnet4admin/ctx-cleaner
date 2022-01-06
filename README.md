@@ -71,7 +71,7 @@ Example installation steps:
 
 ```bash
 $ sudo git clone https://github.com/sysnet4admin/ctx-cleaner.git /opt/ctx-cleaner
-$ sudo ln -s /opt/ctx-cleaner /usr/local/bin/kubectx
+$ sudo ln -s /opt/ctx-cleaner /usr/local/bin/ctx-cleaner
 ```
 
 **OR**
@@ -83,8 +83,9 @@ $ chmod +x /usr/local/bin/ctx-cleaner
 
 -----
 
-## Uninstall kubectxon 
+## Uninstall ctx-cleaner
 
 ```bash
+# rm -rf /opt/ctx-cleaner 
 $ rm -f /usr/local/bin/ctx-cleaner 
 ```
