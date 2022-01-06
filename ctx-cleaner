@@ -17,7 +17,7 @@
 # limitations under the License.
 
 
-# create uniq cluster li1st 
+# create uniq cluster list 
 kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $2 }' > /tmp/ctx-cls.lst
 kubectl config get-clusters | tail -n +2 >> /tmp/ctx-cls.lst
 # uniq remover
@@ -29,13 +29,13 @@ do
   kubectl config delete-cluster "$p"
 done < /tmp/rmv-cls.lst 
 
-# create uniq user li1st 
+# create uniq user list
 kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $3 }' > /tmp/ctx-usr.lst
 kubectl config get-users | tail -n +2 >> /tmp/ctx-usr.lst
 # uniq remover
 sort /tmp/ctx-usr.lst | uniq -u > /tmp/rmv-usr.lst
 
-# delete orphan clusters 
+# delete orphan users
 while IFS="" read -r p || [ -n "$p" ]
 do
   kubectl config delete-user "$p"
