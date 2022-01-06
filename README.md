@@ -86,6 +86,6 @@ $ chmod +x /usr/local/bin/ctx-cleaner
 ## Uninstall ctx-cleaner
 
 ```bash
-# rm -rf /opt/ctx-cleaner 
+$ rm -rf /opt/ctx-cleaner 
 $ rm -f /usr/local/bin/ctx-cleaner 
 ```
