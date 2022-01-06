@@ -36,6 +36,8 @@ gke_hj-int-20200908_us-central1-c_gke
 kubernetes
 ```
 
+-----
+
 ## Usage
 
 ```bash
@@ -52,13 +54,7 @@ deleted user gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
 
 ## Installation
 
-#### krew (under construction)
-You can install and use [Krew](https://github.com/kubernetes-sigs/krew/) kubectl
-plugin manager to get `kubectxon` 
-```bash
-$ kubectl krew install ctxon 
-```
-
+### Add other method later 
 
 #### Manual Installation (macOS and Linux)
 Since ctx-cleaner is written in Bash, you should be able to install 
@@ -88,4 +84,7 @@ $ chmod +x /usr/local/bin/ctx-cleaner
 -----
 
 ### Uninstall kubectxon 
+
+```bash
 $ rm -f /usr/local/bin/ctx-cleaner 
+```
