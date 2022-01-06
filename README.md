@@ -10,7 +10,7 @@
 -----
 
 ## Purpose 
-When k8s Contexts are not matched to Clusters or Users like below: 
+When k8s Contexts are not matched to Clusters or Users like below: <br/>
 (i.e. if you remove contexts, clusters & users cannot remove automatically)
 
 ### k8s Contexts
