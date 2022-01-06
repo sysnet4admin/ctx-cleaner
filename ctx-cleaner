@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+
+# ctx-cleaner(1) is a utility to clean up garbage cluster & user information 
+
+# Copyright 2022 SysNet4Admin (Hoon Jo)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+
+# create uniq cluster li1st 
+kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $2 }' > /tmp/ctx-cls.lst
+kubectl config get-clusters | tail -n +2 >> /tmp/ctx-cls.lst
+# uniq remover
+sort /tmp/ctx-cls.lst | uniq -u > /tmp/rmv-cls.lst
+
+# delete orphan clusters 
+while IFS="" read -r p || [ -n "$p" ]
+do
+  kubectl config delete-cluster "$p"
+done < /tmp/rmv-cls.lst 
+
+# create uniq user li1st 
+kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $3 }' > /tmp/ctx-usr.lst
+kubectl config get-users | tail -n +2 >> /tmp/ctx-usr.lst
+# uniq remover
+sort /tmp/ctx-usr.lst | uniq -u > /tmp/rmv-usr.lst
+
+# delete orphan clusters 
+while IFS="" read -r p || [ -n "$p" ]
+do
+  kubectl config delete-user "$p"
+done < /tmp/rmv-usr.lst 
+
+# delete tmp files 
+rm /tmp/ctx-cls.lst /tmp/rmv-cls.lst /tmp/ctx-usr.lst /tmp/rmv-usr.lst
