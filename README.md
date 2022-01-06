@@ -56,6 +56,11 @@ deleted user gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
 
 ### Add other method later 
 
+### One time runner 
+```bash 
+$ curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner | bash
+```
+
 ### Manual Installation (macOS and Linux)
 Since ctx-cleaner is written in Bash, you should be able to install 
 them to any POSIX environment that has Bash installed
