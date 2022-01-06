@@ -1,4 +1,4 @@
-# `ctx-cleaner`: Easy to clean up garbage cluster & user information.
+# `ctx-cleaner`: Easy to clean up garbage on contexts
 
 [![version](https://img.shields.io/badge/version-0.9-yellow.svg)](https://semver.org)
 ![Proudly written in Bash](https://img.shields.io/badge/written%20in-bash-ff69b4.svg)
