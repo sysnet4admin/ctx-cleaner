@@ -13,7 +13,7 @@
 When k8s Contexts are not matched to Clusters or Users like below: <br/>
 (i.e. if you remove contexts, clusters & users cannot remove automatically)
 
-### k8s Contexts
+#### k8s Contexts
 ```bash 
 $ kubectl config get-contexts
 CURRENT   NAME   CLUSTER                                          AUTHINFO                                         NAMESPACE
@@ -23,7 +23,7 @@ CURRENT   NAME   CLUSTER                                          AUTHINFO      
           nks    kubernetes                                       kubernetes-admin
 ```
 
-### k8s Clusters 
+#### k8s Clusters 
 ```bash 
 $ kubectl config get-clusters
 NAME
@@ -56,7 +56,7 @@ deleted user gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
 
 ### Add other method later 
 
-#### Manual Installation (macOS and Linux)
+### Manual Installation (macOS and Linux)
 Since ctx-cleaner is written in Bash, you should be able to install 
 them to any POSIX environment that has Bash installed
 
@@ -71,7 +71,7 @@ Example installation steps:
 
 ```bash
 $ sudo git clone https://github.com/sysnet4admin/ctx-cleaner.git /opt/ctx-cleaner
-sudo ln -s /opt/ctx-cleaner /usr/local/bin/kubectx
+$ sudo ln -s /opt/ctx-cleaner /usr/local/bin/kubectx
 ```
 
 **OR**
@@ -83,7 +83,7 @@ $ chmod +x /usr/local/bin/ctx-cleaner
 
 -----
 
-### Uninstall kubectxon 
+## Uninstall kubectxon 
 
 ```bash
 $ rm -f /usr/local/bin/ctx-cleaner 
