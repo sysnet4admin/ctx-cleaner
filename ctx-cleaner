@@ -16,30 +16,49 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+[[ -n $DEBUG ]] && set -x
+set -eou pipefail
+#IFS=$'\n\t'
 
-# create uniq cluster list 
-kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $2 }' > /tmp/ctx-cls.lst
-kubectl config get-clusters | tail -n +2 >> /tmp/ctx-cls.lst
-# uniq remover
-sort /tmp/ctx-cls.lst | uniq -u > /tmp/rmv-cls.lst
 
-# delete orphan clusters 
-while IFS="" read -r p || [ -n "$p" ]
-do
-  kubectl config delete-cluster "$p"
-done < /tmp/rmv-cls.lst 
+clear_cluster() {
+  # create uniq cluster list
+  kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $2 }' > /tmp/ctx-cls.lst
+  kubectl config get-clusters | tail -n +2 >> /tmp/ctx-cls.lst
+  # uniq remover
+  sort /tmp/ctx-cls.lst | uniq -u > /tmp/rmv-cls.lst
 
-# create uniq user list
-kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $3 }' > /tmp/ctx-usr.lst
-kubectl config get-users | tail -n +2 >> /tmp/ctx-usr.lst
-# uniq remover
-sort /tmp/ctx-usr.lst | uniq -u > /tmp/rmv-usr.lst
+  # delete orphan clusters 
+  while IFS="" read -r p || [ -n "$p" ]
+  do
+    kubectl config delete-cluster "$p"
+  done < /tmp/rmv-cls.lst 
+}
 
-# delete orphan users
-while IFS="" read -r p || [ -n "$p" ]
-do
-  kubectl config delete-user "$p"
-done < /tmp/rmv-usr.lst 
+clear_user() {
+  # create uniq user list
+  kubectl config get-contexts | tail -n +2 | cut -d" " -f2- | awk '{ print $3 }' > /tmp/ctx-usr.lst
+  kubectl config get-users | tail -n +2 >> /tmp/ctx-usr.lst
+  # uniq remover
+  sort /tmp/ctx-usr.lst | uniq -u > /tmp/rmv-usr.lst
 
-# delete tmp files 
-rm /tmp/ctx-cls.lst /tmp/rmv-cls.lst /tmp/ctx-usr.lst /tmp/rmv-usr.lst
+  # delete orphan users
+  while IFS="" read -r p || [ -n "$p" ]
+  do
+    kubectl config delete-user "$p"
+  done < /tmp/rmv-usr.lst 
+}
+
+main() {
+  # clean up unused cluster info 
+  clear_cluster
+
+  # clean up unused user info 
+  clear_user
+
+  # delete tmp files 
+  rm /tmp/ctx-cls.lst /tmp/rmv-cls.lst /tmp/ctx-usr.lst /tmp/rmv-usr.lst
+}
+
+main "$@"
+
