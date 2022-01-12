@@ -9,6 +9,17 @@
 
 -----
 
+## Environment
+
+kubectl >= 1.20.x
+```bash
+kubectl version --client
+Client Version: version.Info{Major:"1", Minor:"23", GitVersion:"v1.23.1", GitCommit:"86ec240af8cbd1b60bcc4c03c20da9b98005b92e", GitTreeState:"clean", BuildDate:"2021-12-16T11:33:37Z", GoVersion:"go1.17.5", Compiler:"gc", Platform:"darwin/amd64"}
+```
+
+In versions of kubectl less than 1.20, an error occurs because the `kubectl config get-users` command cannot be found among the execution contents.
+
+
 ## Purpose 
 When k8s Contexts are not matched to Clusters or Users like below: <br/>
 (i.e. if you remove contexts, clusters & users cannot remove automatically)
