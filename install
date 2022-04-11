@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+[[ -n $DEBUG ]] && set -x
+set -eou pipefail
+IFS=$'\n\t'
+
+HOMEDIR=~/.ctx-cleaner 
+NAME=ctx-cleaner 
+
+copy_to_bin(){
+curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner -o /usr/local/bin/ctx-cleaner
+}
+
+main() {
+  copy_to_bin
+  echo "successfully installed $NAME"
+}
+
+main "$@"

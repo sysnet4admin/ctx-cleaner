@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+[[ -n $DEBUG ]] && set -x
+set -eou pipefail
+IFS=$'\n\t'
+
+HOMEDIR=~/.ctx-cleaner
+NAME=ctx-cleaner 
+
+delete_bin(){
+sudo rm -f /usr/local/bin/ctx-cleaner 
+}
+
+main() {
+  delete_bin && : || echo -e "error to delete /usr/local/bin/$NAME" 
+  echo -e "successfully uninstalled $NAME"
+}
+
+main "$@"

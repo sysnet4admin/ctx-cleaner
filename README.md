@@ -69,32 +69,13 @@ deleted user gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
 
 ### One time runner 
 ```bash 
-$ curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner | bash
+curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner | bash
 ```
 
-### Manual Installation (macOS and Linux)
-Since ctx-cleaner is written in Bash, you should be able to install 
-them to any POSIX environment that has Bash installed
-
-- Download the `ctx-cleaner` scripts.
-- Either:
-  - save them all to somewhere in your `PATH`,
-  - or save them to a directory, then create symlinks to `ctx-cleaner` from
-    somewhere in your `PATH`, like `/usr/local/bin`
-- Make `ctx-cleaner` executable (`chmod +x ...`)
-
-Example installation steps:
+### Installation (macOS and Linux)
 
 ```bash
-$ sudo git clone https://github.com/sysnet4admin/ctx-cleaner.git /opt/ctx-cleaner
-$ sudo ln -s /opt/ctx-cleaner /usr/local/bin/ctx-cleaner
-```
-
-**OR**
-
-```bash
-$ curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner -o /usr/local/bin/ctx-cleaner
-$ chmod +x /usr/local/bin/ctx-cleaner
+curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner/install | bash 
 ```
 
 -----
@@ -102,6 +83,5 @@ $ chmod +x /usr/local/bin/ctx-cleaner
 ## Uninstall ctx-cleaner
 
 ```bash
-$ rm -rf /opt/ctx-cleaner 
-$ rm -f /usr/local/bin/ctx-cleaner 
+curl https://raw.githubusercontent.com/sysnet4admin/ctx-cleaner/main/ctx-cleaner/uninstall | bash 
 ```
