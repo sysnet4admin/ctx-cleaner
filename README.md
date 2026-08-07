@@ -53,12 +53,12 @@ kubernetes
 
 ```bash
 $ ctx-cleaner 
-deleted cluster gke_20200512_us-central1-c_beer from /Users/mz01-hj/.kube/config
-deleted cluster gke_20200512_us-central1-c_bread from /Users/mz01-hj/.kube/config
-deleted cluster gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
-deleted user gke_20200512_us-central1-c_beer from /Users/mz01-hj/.kube/config
-deleted user gke_20200512_us-central1-c_bread from /Users/mz01-hj/.kube/config
-deleted user gke_20200512_us-central1-c_coffee from /Users/mz01-hj/.kube/config
+deleted cluster gke_20200512_us-central1-c_beer from /Users/user/.kube/config
+deleted cluster gke_20200512_us-central1-c_bread from /Users/user/.kube/config
+deleted cluster gke_20200512_us-central1-c_coffee from /Users/user/.kube/config
+deleted user gke_20200512_us-central1-c_beer from /Users/user/.kube/config
+deleted user gke_20200512_us-central1-c_bread from /Users/user/.kube/config
+deleted user gke_20200512_us-central1-c_coffee from /Users/user/.kube/config
 ```
 
 -----
